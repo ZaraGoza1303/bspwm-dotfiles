@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-read -p "Yakin ingin melakukan instalasi dotfiles ? (Y/n)" CONFIRMATION
+read -p "Are you sure want to install this dotfiles ? (Y/n)" CONFIRMATION
 if [[ "$CONFIRMATION" == "y" || "$CONFIRMATION" == "Y" ]]; then
 
 	echo "Installing Packages.."
@@ -9,10 +9,10 @@ if [[ "$CONFIRMATION" == "y" || "$CONFIRMATION" == "Y" ]]; then
 	brightnessctl libnotify ttf-jetbrains-mono-nerd lxappearance base-devel git
 
 	if ! command -v yay > /dev/null 2>&1; then
-		echo "yay belum terinstall, Install yay ?(Y/n)"
+		echo "yay isn't installed yet, Install yay ?(Y/n)"
 		read INSTALL_YAY
 		if [[ "$INSTALL_YAY" == "n" || "$INSTALL_YAY" == "N" ]]; then
-			echo "yay harus terinstall untuk melanjutkan."
+			echo "yay must be installed to continue."
 			exit 1
 		else
 			cd /tmp
