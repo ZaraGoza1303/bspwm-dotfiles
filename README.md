@@ -12,7 +12,7 @@ After you complete download it, extract the folder and then copy the folder to *
 ## **Betterlockscreen init walpaper**
 U need to init the walpaper for betterlockscreen
 
-### **Init Betterlockscreen**
+#### **Init Betterlockscreen**
 ```bash
 betterlockscreen -u path/to/img.jpg
 ```
