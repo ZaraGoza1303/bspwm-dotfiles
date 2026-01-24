@@ -5,7 +5,9 @@ read -p "Yakin ingin melakukan instalasi dotfiles ? (Y/n)" CONFIRMATION
 if [[ "$CONFIRMATION" == "y" || "$CONFIRMATION" == "Y" ]]; then
 
 	echo "Installing Packages.."
-	sudo pacman -S --noconfirm bspwm sxhkd picom nitrogen dunst network-manager-applet flameshot polybar xdg-desktop-portal-gtk xss-lock
+	sudo pacman -S --noconfirm bspwm sxhkd picom dunst network-manager-applet flameshot polybar xdg-desktop-portal-gtk xss-lock alacritty rofi thunar pamixer \
+	brightnessctl libnotify ttf-jetbrains-mono-nerd lxappearance base-devel git
+
 	if ! command -v yay > /dev/null 2>&1; then
 		echo "yay belum terinstall, Install yay ?(Y/n)"
 		read INSTALL_YAY
@@ -13,9 +15,15 @@ if [[ "$CONFIRMATION" == "y" || "$CONFIRMATION" == "Y" ]]; then
 			echo "yay harus terinstall untuk melanjutkan."
 			exit 1
 		else
-			sudo pacman -S --noconfirm yay
+			cd /tmp
+			rm -rf /tmp/yay
+			git clone https://aur.archlinux.org/yay.git
+			cd yay
+			makepkg -si --noconfirm
 		fi
 	fi
+
+	yay -S --noconfirm betterlockscreen nitrogen
 
 	echo "Overwriting config folders..."
    	rm -rf \
